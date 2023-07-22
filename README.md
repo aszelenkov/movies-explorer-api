@@ -4,7 +4,7 @@
 [https://github.com/aszelenkov/movies-explorer-api](https://github.com/aszelenkov/movies-explorer-api)
 
 ## Публичный сервер
-[api.aszelenkov.nomoredomains.xyz](api.aszelenkov.nomoredomains.xyz)
+[api.aszelenkov.nomoredomains.xyz](https://api.aszelenkov.nomoredomains.xyz)
 
 IP 158.160.114.224
 
