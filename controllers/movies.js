@@ -4,12 +4,12 @@ const NotFoundError = require('../errors/not-found-err');
 const ValidationError = require('../errors/validation-err');
 const ForbiddenError = require('../errors/forbidden-err');
 
-const { STATUS_CREATED, STATUS_OK } = require('../utils/constants');
+const { STATUS_CREATED } = require('../utils/constants');
 
 module.exports.getMovies = async (req, res, next) => {
   try {
     const movies = await Movie.find({ owner: req.user._id });
-    res.status(STATUS_OK).send(movies);
+    res.send(movies);
   } catch (err) {
     next(err);
   }
@@ -38,7 +38,7 @@ module.exports.deleteMovie = async (req, res, next) => {
       throw new ForbiddenError('Недостаточно прав для удаления карточки');
     }
     await Movie.deleteOne();
-    res.status(STATUS_OK).send(movie);
+    res.send(movie);
   } catch (err) {
     if (err.name === 'CastError') {
       next(new ValidationError('Переданы некорректные данные в методе удаления карточки'));
