@@ -4,8 +4,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-const rateLimit = require('./middlewares/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+// const rateLimit = require('./middlewares/limiter');
 const router = require('./routes/index');
 const handleError = require('./middlewares/handleError');
 const { MONGO_URL_DEV } = require('./utils/constants');
@@ -19,10 +19,10 @@ mongoose.connect(NODE_ENV === 'production' ? MONGO_URL : MONGO_URL_DEV)
   .catch((err) => console.log(err));
 
 app.use(helmet());
-app.use(rateLimit);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
+// app.use(rateLimit);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
